@@ -21,3 +21,20 @@ classDiagram
         + get_badges() vector~string~
   }
 ```
+## Data model 2
+
+```mermaid
+classDiagram 
+      TypeCoach <|-- TypeStudent   
+      class TypeCoach{
+            -id: string
+            +create_lesson()string
+      }
+      class TypeStudent{
+            -name: string
+            -email: string
+            -level: integer
+            -problem_keys: string
+            + get_email() string
+      }
+      
