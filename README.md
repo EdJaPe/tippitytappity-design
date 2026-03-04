@@ -3,38 +3,40 @@
 tippitytappity is a program to practice typing
 
 
-## Data model
 
-```mermaid
+## Data model 2 Revision
+
+
+It keeps a history of each typing test the user attempts including the results (both accuracy and speed)
+Supports multiple users, with history for each user to monitor their progress over time
+
+```mermaid 
 classDiagram
-  ExampleParent <|-- ExampleChild
-  class ExampleParent{
-        - name: string
-        - email: string
-        - password: string
-        + login(user: string, pass: string) boolean
-        + get_email() string
-  }
-  class ExampleChild{
-        - badges vector~string~
-        + add_badge(title: string)
-        + get_badges() vector~string~
-  }
-```
-## Data model 2
-
-```mermaid
-classDiagram 
-      TypeCoach <|-- TypeStudent   
-      class TypeCoach{
-            -id: string
-            +create_lesson()string
-      }
-      class TypeStudent{
+      User -->TypeChecker
+      class User{
             -name: string
             -email: string
             -level: integer
-            -problem_keys: string
-            + get_email() string
+            +typeHIstory: string
+            +typeTime: integer
+            +typeLevel: integer
       }
-      
+      class TypeChecker{
+            -id_checker : string
+            -solution: string
+            +get_Accuracy(typeHistory, solution  )
+            +get_problemKeys(typeHistory, solution)
+            +get_typingSpeed(typeTime, typeHistory)
+
+
+      }
+      TypeChecker -->ProgressChecker
+      class ProgressChecker{
+            -id : integer
+            +getProgress()
+
+      }
+
+
+```
+
